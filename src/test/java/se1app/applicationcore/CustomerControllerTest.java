@@ -1,4 +1,4 @@
-package demo;
+package se1app.applicationcore;
 
 import static com.jayway.restassured.RestAssured.*;
 import static com.jayway.restassured.matcher.RestAssuredMatchers.*;
@@ -24,14 +24,14 @@ import java.util.LinkedList;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebIntegrationTest("server.port:0")
-public class CharacterControllerTest {
+public class CustomerControllerTest {
 
     @Autowired
-    CharacterRepository repository;
+    CustomerRepository repository;
 
-    Character mickey;
-    Character minnie;
-    Character pluto;
+    Customer mickey;
+    Customer minnie;
+    Customer pluto;
 
     @Value("${local.server.port}")
     int serverPort;
@@ -39,9 +39,9 @@ public class CharacterControllerTest {
     @Before
     public void setUp() {
 
-        mickey = new Character("Mickey Mouse");
-        minnie = new Character("Minnie Mouse");
-        pluto = new Character("Pluto");
+        mickey = new Customer("Mickey Mouse");
+        minnie = new Customer("Minnie Mouse");
+        pluto = new Customer("Pluto");
 
         repository.deleteAll();
         repository.save(Arrays.asList(mickey, minnie, pluto));
@@ -54,7 +54,7 @@ public class CharacterControllerTest {
         Integer mickeyId = mickey.getId();
 
         when().
-                get("/characters/{id}", mickeyId).
+                get("/customers/{id}", mickeyId).
                 then().
                 statusCode(HttpStatus.OK.value()).
                 body("name", is("Mickey Mouse")).
@@ -64,7 +64,7 @@ public class CharacterControllerTest {
     @Test
     public void canFetchAll() {
         when().
-                get("/characters").
+                get("/customers").
                 then().
                 statusCode(HttpStatus.OK.value()).
                 body("name", hasItems("Mickey Mouse", "Minnie Mouse", "Pluto"));
@@ -75,7 +75,7 @@ public class CharacterControllerTest {
         Integer plutoId = pluto.getId();
 
         when()
-                .delete("/characters/{id}", plutoId).
+                .delete("/customers/{id}", plutoId).
                 then().
                 statusCode(HttpStatus.NO_CONTENT.value());
     }

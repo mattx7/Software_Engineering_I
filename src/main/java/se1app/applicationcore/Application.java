@@ -1,4 +1,4 @@
-package demo;
+package se1app.applicationcore;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,12 +11,12 @@ import java.util.Arrays;
 public class Application {
 
     @Bean
-    CommandLineRunner init(CharacterRepository characterRepository) {
+    CommandLineRunner init(CustomerRepository customerRepository) {
         return (evt) -> Arrays.asList(
                 "mueller,meier,schulze".split(","))
                 .forEach(
                         a -> {
-                            characterRepository.save(new Character(a));
+                            customerRepository.save(new Customer(a));
                         });
     }
 
