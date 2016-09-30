@@ -24,11 +24,11 @@ public class ReservationRepositoryTest {
 
     @Before
     public void setup() {
-        Customer stefan = new Customer("Stefan");
+        Customer stefan = new Customer("Stefan", new EmailType("stefan.sarstedt@haw-hamburg.de"));
         stefan.addReservation(new Reservation("Spectre"));
         customerRepository.save(stefan);
 
-        Customer ina = new Customer("Ina");
+        Customer ina = new Customer("Ina", new EmailType("inat@haw-hamburg.de"));
         ina.addReservation(new Reservation("Spectre"));
         customerRepository.save(ina);
     }

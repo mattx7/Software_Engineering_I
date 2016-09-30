@@ -4,16 +4,20 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Diese Klasse repräsentiert eine Entität
+// Wichtig ist für Spring hier das @Entity-Schlüsselwort, damit dieses von JPA verwaltbar ist
 @Entity
 public class Customer {
-
-    private String name;
-
     // Technische ID der Entität (Auto-generiert)
     // Wir würden besser zusätzlich noch eine fachliche ID definieren
     @Id
     @GeneratedValue
     private Integer id;
+
+    private String name;
+
+    // Fachlicher Datentyp (immutable)
+    private EmailType email;
 
     // Definition einer 1:*-Beziehung
     // Kaskadierende Operationen
@@ -25,9 +29,10 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer(String name)
+    public Customer(String name, EmailType email)
     {
         this.name = name;
+        this.email = email;
     }
 
     public Integer getId() {
@@ -36,6 +41,14 @@ public class Customer {
 
     public String getName() {
         return name;
+    }
+
+    public EmailType getEmail() {
+        return email;
+    }
+
+    public void setEmail(EmailType email) {
+        this.email = email;
     }
 
     public void addReservation(Reservation reservation)

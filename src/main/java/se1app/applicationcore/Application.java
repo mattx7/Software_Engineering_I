@@ -16,7 +16,7 @@ public class Application {
                 "mueller,meier,schulze".split(","))
                 .forEach(
                         a -> {
-                            customerRepository.save(new Customer(a));
+                            customerRepository.save(new Customer(a, new EmailType(a + "@haw-hamburg.de")));
                         });
     }
 

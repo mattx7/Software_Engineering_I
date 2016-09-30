@@ -23,17 +23,17 @@ public class CustomerRepositoryTest {
 
 	@Before
 	public void setup() {
-		Customer stefan = new Customer("Stefan");
+		Customer stefan = new Customer("Stefan", new EmailType("stefan.sarstedt@haw-hamburg.de"));
 		stefan.addReservation(new Reservation("Spectre"));
 		stefan.addReservation(new Reservation("Goldfinger"));
 		// Kaskadierendes Speichern der Reservierungen durch entsprechende 'Cascade'-Angabe in Customer!
 		customerRepository.save(stefan);
 
-		Customer ina = new Customer("Ina");
+		Customer ina = new Customer("Ina", new EmailType("ina@haw-hamburg.de"));
 		ina.addReservation(new Reservation("Spectre"));
 		customerRepository.save(ina);
 
-		Customer michel = new Customer("Michael");
+		Customer michel = new Customer("Michael", new EmailType("michael@haw-hamburg.de"));
 		michel.addReservation(new Reservation("Minions"));
 		customerRepository.save(michel);
 	}

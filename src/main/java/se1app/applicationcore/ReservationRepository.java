@@ -7,9 +7,10 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-    // Spring leitet die Query aus der Signatur ab
+    // Spring leitet die Query aus der Signatur ab ("movie" ist ein Attribut von Reservation)
     List<Reservation> findByMovie(String movie);
 
     // Spring leitet die Query aus der Signatur ab; hier übergreifend mit referenzierter Entität 'Customer'
+    // ("customer" ist ein Attribut von Reservation)
     List<Reservation> findByCustomer(Customer customer);
 }
