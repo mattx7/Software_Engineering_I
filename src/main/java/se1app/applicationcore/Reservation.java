@@ -12,6 +12,10 @@ public class Reservation {
 
     private String movie;
 
+    // Wir referenzieren hier die Rückrichtung der 1:n-Beziehung Customer-Reservation.
+    // Solche bidirektionalen Beziehungen sind schwer zu verwenden (man muss bei Updates immer
+    // an beide Richtungen denken!), deswegen verzichten Sie besser darauf, soweit es geht
+    // (also: unidirektionale Beziehungen verwenden, wenn es geht).
     @ManyToOne
     private Customer customer;
 

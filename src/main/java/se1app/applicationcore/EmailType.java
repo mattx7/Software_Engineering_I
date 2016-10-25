@@ -2,10 +2,12 @@ package se1app.applicationcore;
 
 import java.io.Serializable;
 
-// Diese Klasse repräsentiert einen fachlichen Datentyp und implementiert entsprechend
-// das Value-object-Pattern
+// Diese Klasse repräsentiert einen fachlichen Datentyp und implementiert entsprechend das Value-object-Pattern
 // @see <a href="https://en.wikipedia.org/wiki/Value_object">Value object</a>
+//
 // Damit der Datentyp von JPA gespeichert werden kann, muss er serialisierbar sein (implements Serializable)
+// Besser als die Defaultimplementierung wäre eine eigene Implementierung des Serializable-Interfaces.
+// Die Defaultimplementierung führt zu unleserlichem DB-Inhalt für den EmailType (checken Sie dies in der h2-console!).
 public class EmailType implements Serializable {
 
     /**
