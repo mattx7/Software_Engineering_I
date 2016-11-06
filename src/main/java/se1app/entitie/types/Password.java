@@ -33,7 +33,7 @@ public class Password {
         this.pw = pw;
     }
 
-    public String getEmail() {
+    public String getPassword() {
         return pw;
     }
 
