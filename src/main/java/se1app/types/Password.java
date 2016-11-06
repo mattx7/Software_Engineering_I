@@ -1,4 +1,4 @@
-package se1app.entitie.types;
+package se1app.types;
 
 /**
  * Created by Neak on 06.11.2016.
