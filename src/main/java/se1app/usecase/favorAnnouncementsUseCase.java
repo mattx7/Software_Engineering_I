@@ -8,14 +8,18 @@ import se1app.types.Distance;
 public interface favorAnnouncementsUseCase {
 
     /**
-     * @param category
-     * @param distance
+     * search for sport announcements
+     *
+     * @param category which sport are we looking for
+     * @param distance max distance
      */
-    void search(Sports category, Distance distance);
+    void searchAnnouncements(Sports category, Distance distance);
 
 
     /**
-     * @param announcement
+     * Adds an announcement to the list of favorites
+     *
+     * @param announcement which we want to favor
      */
     void addToFavorites(Announcement announcement);
 
