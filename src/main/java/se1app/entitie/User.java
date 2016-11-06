@@ -1,6 +1,6 @@
 package se1app.entitie;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -9,21 +9,54 @@ import java.util.List;
 @Entity
 public class User {
 
+    @Id
+    @GeneratedValue
+    private Integer id;
+
     private List profileImages;
     private String telNr;
     private String description;
     private String gender;
     private String relationship;
+
+    @OneToOne
     private Residence residence;
+
     private String languages;
+
+    @ManyToMany
     private List<Sports> favSports;
+    @ManyToMany
     private List<Announcement> favAnnos;
 
-
-    //TODO constructors with optional languages, relationsship, description and so on...
-
+    //TODO Create user
     public User() {
-        //TODO
+
+    }
+
+    //TODO deleteProfile
+    public static void deleteProfile() {
+
+    }
+
+    //TODO addProfilePicture
+    public static void addProfilePicture() {
+
+    }
+
+    //TODO deleteProfilePicture
+    public static void deleteProfilePicture() {
+
+    }
+
+    //TODO sendContactRequest
+    public static void sendContactRequest() {
+
+    }
+
+    //TODO editAnnouncement
+    public static void editAnnouncement() {
+
     }
 
     //GETTER

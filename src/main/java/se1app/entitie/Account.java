@@ -3,6 +3,9 @@ package se1app.entitie;
 import se1app.entitie.types.Password;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * Created by MattX7 on 06.11.2016.
@@ -10,8 +13,14 @@ import javax.persistence.Entity;
 @Entity
 public class Account {
 
+    @Id
+    @GeneratedValue
+    private Integer id;
+
     private String username;
     private Password password;
+
+    @OneToOne
     private User user;
 
     public Account(String username, Password password) {

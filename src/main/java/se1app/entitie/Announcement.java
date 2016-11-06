@@ -1,6 +1,6 @@
 package se1app.entitie;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -9,8 +9,14 @@ import java.util.Date;
 @Entity
 public class Announcement {
 
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @OneToOne
     private Sports category;
     private String description;
+    @ManyToOne
     private User owner;
     private Date creationDate;
 
