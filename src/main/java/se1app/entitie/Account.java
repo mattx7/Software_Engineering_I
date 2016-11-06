@@ -1,5 +1,7 @@
 package se1app.entitie;
 
+import se1app.entitie.types.Password;
+
 import javax.persistence.Entity;
 
 /**
@@ -7,4 +9,8 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Account {
+
+    private String username;
+    private Password password;
+    private User user;
 }
