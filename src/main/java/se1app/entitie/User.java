@@ -26,8 +26,11 @@ public class User {
 
     @ManyToMany
     private List<Sports> favSports;
+
     @ManyToMany
     private List<Announcement> favAnnos;
+
+    //TODO AnnouncementSearch
 
     //TODO Create user
     public User() {
@@ -50,12 +53,12 @@ public class User {
     }
 
     //TODO sendContactRequest
-    public static void sendContactRequest() {
+    public void sendContactRequest(User user) {
 
     }
 
     //TODO editAnnouncement
-    public static void editAnnouncement() {
+    public void editAnnouncement(Announcement announcement) {
 
     }
 
@@ -95,6 +98,8 @@ public class User {
     public List<Announcement> getFavAnnos() {
         return favAnnos;
     }
+
+    //TODO getMyAnnouncements
 
     //SETTER
 
