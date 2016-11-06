@@ -13,4 +13,36 @@ public class Account {
     private String username;
     private Password password;
     private User user;
+
+    public Account(String username, Password password) {
+        this.username = username;
+        this.password = password;
+        this.user = new User();
+    }
+
+    //GETTER
+    public String getUsername() {
+        return username;
+    }
+
+    public Password getPassword() {
+        return password;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    //SETTER
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(Password password) {
+        this.password = password;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

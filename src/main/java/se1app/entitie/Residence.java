@@ -7,4 +7,19 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Residence {
+    private String ortname;
+
+    public Residence(String ortname) {
+        this.ortname = ortname;
+    }
+
+    //GETTER
+    public String getOrtname() {
+        return ortname;
+    }
+
+    //SETTER
+    public void setOrtname(String ortname) {
+        this.ortname = ortname;
+    }
 }

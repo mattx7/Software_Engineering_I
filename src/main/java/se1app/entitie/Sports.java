@@ -7,4 +7,5 @@ import javax.persistence.Entity;
  */
 @Entity
 public enum Sports {
+    JOGGING, SWIMMING, BIKING, HIKING, OTHER
 }
