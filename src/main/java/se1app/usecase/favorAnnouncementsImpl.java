@@ -6,8 +6,8 @@ import se1app.types.Distance;
 
 import java.util.Collection;
 
-// Interface für unsere Systemoperationen
-public interface favorAnnouncementsUseCase {
+// Klasse für die Implementierung der Use-Case- bzw. User-Story-Operationen
+public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
 
     /**
      * search for sport announcements
@@ -16,19 +16,28 @@ public interface favorAnnouncementsUseCase {
      * @param distance max distance
      * @return Announcements you have searched for
      */
-    Collection<Announcement> searchAnnouncements(Sports category, Distance distance);
+    @Override
+    public Collection<Announcement> searchAnnouncements(Sports category, Distance distance) {
+        return null;
+    }
 
     /**
      * Adds an announcement to the list of favorites
      *
      * @param announcement which we want to favor
      */
-    void addToFavorites(Announcement announcement);
+    @Override
+    public void addToFavorites(Announcement announcement) {
+
+    }
 
     /**
      * Get all favoured Announcements
      *
      * @return Your favorite announcements
      */
-    Collection<Announcement> getFavoriteAnnouncements();
+    @Override
+    public Collection<Announcement> getFavoriteAnnouncements() {
+        return null;
+    }
 }
