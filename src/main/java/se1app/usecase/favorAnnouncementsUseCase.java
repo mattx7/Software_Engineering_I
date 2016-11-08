@@ -2,6 +2,7 @@ package se1app.usecase;
 
 import se1app.entity.Announcement;
 import se1app.entity.Sports;
+import se1app.entity.User;
 import se1app.types.Distance;
 
 import java.util.Collection;
@@ -23,12 +24,28 @@ public interface favorAnnouncementsUseCase {
      *
      * @param announcement which we want to favor
      */
-    void addToFavorites(Announcement announcement);
+    void addToFavorites(Announcement announcement, User user);
 
     /**
      * Get all favoured Announcements
      *
      * @return Your favorite announcements
      */
-    Collection<Announcement> getFavoriteAnnouncements();
+    Collection<Announcement> getFavoriteAnnouncements(User user);
+
+    /**
+     * Get the distance of an Announcement
+     *
+     * @return the distance of an Announcement
+     */
+    void getDistance(Announcement announcement);
+
+    /**
+     * Get the category of an Announcement
+     *
+     * @return the category of an Announcement
+     */
+    void getCategory(Announcement announcement);
+
+
 }
