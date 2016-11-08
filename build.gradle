@@ -33,6 +33,7 @@ dependencies {
     runtime('com.h2database:h2')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile 'org.assertj:assertj-core:3.5.2'
+    compile group: 'org.webjars', name: 'angularjs', version: '2.0.0-alpha.22'
 }
 
 
