@@ -57,8 +57,8 @@ public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
         return filter;
     }
 
-    public final Filter createFilter(Distance distance, Sports category) throws TechnicalProblemException {
-        return new Filter(category, distance);
+    public final Filter createFilter(Sports category) throws TechnicalProblemException {
+        return new Filter(category);
     }
 
     /**
@@ -70,7 +70,7 @@ public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
      */
     @Override
     public List<Announcement> searchAnnouncements(Filter filter) throws TechnicalProblemException {
-        return null;
+        return announcementRepository.findAnnouncementByCategory(filter.getCategory());
     }
 
     /**

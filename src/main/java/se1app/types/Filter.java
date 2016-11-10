@@ -15,6 +15,10 @@ public class Filter {
     public Filter() {
     }
 
+    public Filter(Sports category) {
+        this.category = category;
+    }
+
     public Filter(Sports category, Distance distance) {
         this.category = category;
         this.distance = distance;

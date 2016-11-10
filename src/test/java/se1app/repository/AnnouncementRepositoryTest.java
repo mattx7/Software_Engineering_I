@@ -70,4 +70,5 @@ public class AnnouncementRepositoryTest {
         assertThat(annos).hasSize(2);
     }
 
+    // TODO @neak testFindAnnouncementByCategory()
 }
