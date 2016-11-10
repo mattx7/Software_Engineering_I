@@ -16,4 +16,8 @@ public enum Sports implements Filterable {
     @Id
     @GeneratedValue
     private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
 }

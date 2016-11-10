@@ -2,7 +2,6 @@ package se1app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import se1app.entity.Announcement;
 import se1app.entity.User;
 
 import java.util.Optional;
@@ -13,5 +12,5 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     // Spring leitet die Query aus der Signatur ab ("id" ist ein Attribut)
-    Optional<Announcement> findByID(Integer id);
+    Optional<User> findById(Integer id);
 }

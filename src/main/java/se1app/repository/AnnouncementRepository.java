@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public interface AnnouncementRepository extends JpaRepository<Announcement, Integer> {
     // Spring leitet die Query aus der Signatur ab ("id" ist ein Attribut)
-    Optional<Announcement> findByID(Integer id);
+    Optional<Announcement> findById(Integer id);
 
 
     // Hier definieren wir eine eigene SQL-Query ("native")

@@ -1,9 +1,11 @@
 package se1app.types;
 
+import java.io.Serializable;
+
 /**
  * Created by Neak on 06.11.2016.
  */
-public class Password {
+public class Password implements Serializable {
 
     private String pw;
 

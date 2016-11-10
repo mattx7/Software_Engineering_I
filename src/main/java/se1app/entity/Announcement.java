@@ -61,4 +61,8 @@ public class Announcement {
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }

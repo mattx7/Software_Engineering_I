@@ -1,8 +1,9 @@
 package se1app.entity;
 
+import se1app.types.Image;
+
 import javax.persistence.*;
 import java.util.List;
-
 /**
  * Created by MattX7 on 06.11.2016.
  */
@@ -13,7 +14,8 @@ public class User {
     @GeneratedValue
     private Integer id;
 
-    private List profileImages;
+    // TODO später als Liste
+    private Image profileImages;
     private String telNr;
     private String description;
     private String gender;
@@ -62,10 +64,6 @@ public class User {
 
     }
 
-    //GETTER
-    public List getProfileImages() {
-        return profileImages;
-    }
 
     public String getTelNr() {
         return telNr;
@@ -101,11 +99,6 @@ public class User {
 
     //TODO getMyAnnouncements
 
-    //SETTER
-
-    public void setProfileImages(List profileImages) {
-        this.profileImages = profileImages;
-    }
 
     public void setTelNr(String telNr) {
         this.telNr = telNr;
@@ -137,5 +130,17 @@ public class User {
 
     public void setFavAnnos(List<Announcement> favAnnos) {
         this.favAnnos = favAnnos;
+    }
+
+    public Image getProfileImages() {
+        return profileImages;
+    }
+
+    public void setProfileImages(Image profileImages) {
+        this.profileImages = profileImages;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

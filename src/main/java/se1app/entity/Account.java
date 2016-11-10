@@ -55,6 +55,10 @@ public class Account {
         this.user = user;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o instanceof Account) {

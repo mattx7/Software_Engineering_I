@@ -14,19 +14,23 @@ public class Residence {
     @GeneratedValue
     private Integer id;
 
-    private String ortname;
+    private String name;
 
-    public Residence(String ortname) {
-        this.ortname = ortname;
+    public Residence(String name) {
+        this.name = name;
     }
 
     //GETTER
-    public String getOrtname() {
-        return ortname;
+    public String getName() {
+        return name;
     }
 
     //SETTER
-    public void setOrtname(String ortname) {
-        this.ortname = ortname;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }
