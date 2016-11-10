@@ -47,7 +47,7 @@ public class AnnouncementRepositoryTest {
         Announcement announo = new Announcement(jogging, "Eine Beschreibung", useruno, datumuno);
         announcementRepository.save(announo);
 
-        Date datumdos = new Date(2016, 12, 16, 12, 12);
+        Date datumdos = new Date(2016, 12, 06, 12, 12);
         User userdos = new User();
         userRepository.save(userdos);
 
@@ -58,17 +58,22 @@ public class AnnouncementRepositoryTest {
     }
 
     @Test
-    public void testFindAnnouncementByCreationDate() throws Exception {
-        Date datumuno = new Date(2016, 12, 16, 12, 12);
-        List<Announcement> announcement = announcementRepository.findByCreationDate(datumuno);
-        assertThat(announcement.get(0).getCreationDate().equals(datumuno));
-    }
-
-    @Test
     public void testFindAll() {
         List<Announcement> annos = announcementRepository.findAll();
         assertThat(annos).hasSize(2);
     }
 
-    // TODO @neak testFindAnnouncementByCategory()
+    @Test
+    public void testFindByCreationDate() throws Exception {
+        Date datumuno = new Date(2016, 12, 16, 12, 12);
+        List<Announcement> annos = announcementRepository.findByCreationDate(datumuno);
+        assertThat(annos.get(0).getCreationDate().equals(datumuno));
+    }
+
+    @Test
+    public void testFindByCategory() {
+        Sports jogging = Sports.JOGGING;
+        List<Announcement> annos = announcementRepository.findByCategory(jogging);
+        assertThat(annos.get(0).getCategory().equals(jogging));
+    }
 }

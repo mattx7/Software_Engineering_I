@@ -28,7 +28,6 @@ public class Announcement {
     }
 
 
-    //GETTER
     public Sports getCategory() {
         return category;
     }
@@ -45,7 +44,6 @@ public class Announcement {
         return creationDate;
     }
 
-    //SETTER
     public void setCategory(Sports category) {
         this.category = category;
     }

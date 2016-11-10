@@ -70,7 +70,7 @@ public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
      */
     @Override
     public List<Announcement> searchAnnouncements(Filter filter) throws TechnicalProblemException {
-        return announcementRepository.findAnnouncementByCategory(filter.getCategory());
+        return announcementRepository.findByCategory(filter.getCategory());
     }
 
     /**

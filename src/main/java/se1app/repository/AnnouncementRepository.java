@@ -22,6 +22,9 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, Inte
             "FROM ANNOUNCEMENT " +
             "WHERE CATEGORY = :category "
             , nativeQuery = true)
-    List<Announcement> findAnnouncementByCategory(@Param("category") Sports category);
+    List<Announcement> findByCategory(@Param("category") Sports category);
+
+
+    // List<Announcement> findByCategory(Sports category);
 
 }
