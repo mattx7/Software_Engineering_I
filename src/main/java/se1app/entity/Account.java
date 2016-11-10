@@ -76,7 +76,7 @@ public class Account {
     @Override
     public String toString() {
         return String.format(
-                "Account[id=%d, username='%s', password='&s']",
+                "Account[id=%d, username='%s', password='%s']",
                 id, username, password);
     }
 }

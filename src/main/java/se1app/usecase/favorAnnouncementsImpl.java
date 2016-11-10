@@ -18,8 +18,12 @@ import java.util.List;
 @Service
 public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
 
+    private final AnnouncementRepository announcementRepository;
+
     @Autowired
-    private AnnouncementRepository announcementRepository;
+    public favorAnnouncementsImpl(AnnouncementRepository announcementRepository) {
+        this.announcementRepository = announcementRepository;
+    }
 
     /**
      * Standard output are all Announcements
@@ -74,6 +78,6 @@ public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
      */
     @Override
     public void addToFavorites(User user, Announcement announcement) throws TechnicalProblemException {
-
+        user.addFavoriteAnnouncement(announcement);
     }
 }

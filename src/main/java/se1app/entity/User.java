@@ -40,17 +40,17 @@ public class User {
     }
 
     //TODO deleteProfile
-    public static void deleteProfile() {
+    public void deleteProfile() {
 
     }
 
     //TODO addProfilePicture
-    public static void addProfilePicture() {
+    public void addProfilePicture() {
 
     }
 
     //TODO deleteProfilePicture
-    public static void deleteProfilePicture() {
+    public void deleteProfilePicture() {
 
     }
 
@@ -64,74 +64,6 @@ public class User {
 
     }
 
-
-    public String getTelNr() {
-        return telNr;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public String getRelationship() {
-        return relationship;
-    }
-
-    public Residence getResidence() {
-        return residence;
-    }
-
-    public String getLanguages() {
-        return languages;
-    }
-
-    public List<Sports> getFavSports() {
-        return favSports;
-    }
-
-    public List<Announcement> getFavAnnos() {
-        return favAnnos;
-    }
-
-    //TODO getMyAnnouncements
-
-
-    public void setTelNr(String telNr) {
-        this.telNr = telNr;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setRelationship(String relationship) {
-        this.relationship = relationship;
-    }
-
-    public void setResidence(Residence residence) {
-        this.residence = residence;
-    }
-
-    public void setLanguages(String languages) {
-        this.languages = languages;
-    }
-
-    public void setFavSports(List<Sports> favSports) {
-        this.favSports = favSports;
-    }
-
-    public void setFavAnnos(List<Announcement> favAnnos) {
-        this.favAnnos = favAnnos;
-    }
-
     public Image getProfileImages() {
         return profileImages;
     }
@@ -140,7 +72,73 @@ public class User {
         this.profileImages = profileImages;
     }
 
+    public String getTelNr() {
+        return telNr;
+    }
+
+    public void setTelNr(String telNr) {
+        this.telNr = telNr;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getRelationship() {
+        return relationship;
+    }
+
+    public void setRelationship(String relationship) {
+        this.relationship = relationship;
+    }
+
+    public Residence getResidence() {
+        return residence;
+    }
+
+    public void setResidence(Residence residence) {
+        this.residence = residence;
+    }
+
+    public String getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(String languages) {
+        this.languages = languages;
+    }
+
+    public void addFavoriteSport(Sports sport) {
+        this.favSports.add(sport);
+    }
+
+    public void removeFavoriteSport(Sports sport) {
+        this.favSports.remove(sport);
+    }
+
+    public void addFavoriteAnnouncement(Announcement announcement) {
+        this.favAnnos.add(announcement);
+    }
+
+    public void removeFavoriteAnnouncement(Announcement announcement) {
+        this.favAnnos.remove(announcement);
+    }
+
     public Integer getId() {
         return id;
     }
+
+
 }
