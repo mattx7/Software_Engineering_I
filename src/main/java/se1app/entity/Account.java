@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 /**
  * Created by MattX7 on 06.11.2016.
  */
+
 @Entity
 public class Account {
 

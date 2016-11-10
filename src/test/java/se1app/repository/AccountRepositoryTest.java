@@ -12,6 +12,7 @@ import se1app.entity.Account;
 import se1app.types.Password;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,10 +30,10 @@ public class AccountRepositoryTest {
 
     @Before
     public void setup() {
-        Account stefan = new Account("Stefan", new Password("Stefan12#"));
+        Account stefan = new Account("Stefan", new Password("Stefan1#"));
         accountRepository.save(stefan);
 
-        Account ina = new Account("Ina", new Password("Ina12+"));
+        Account ina = new Account("Ina", new Password("Inaina12#"));
         accountRepository.save(ina);
 
     }
@@ -44,9 +45,16 @@ public class AccountRepositoryTest {
     }
 
     @Test
-    public void findByID() throws Exception {
-
+    public void findById() throws Exception {
+        Account account = accountRepository.findById(1);
+        assertThat(account.getId().equals(1));
     }
 
+    @Test
+    public void testFindByUsername() {
+        Optional<Account> account = accountRepository.findByUsername("Stefan");
+        assertThat(account.isPresent());
+        assertThat(account.get().getUsername().equals("Stefan"));
+    }
 
 }
