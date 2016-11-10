@@ -12,8 +12,7 @@ import java.util.Optional;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
     // Spring leitet die Query aus der Signatur ab ("id" ist ein Attribut)
-
-    Account findById(Integer id);
+    Optional<Account> findById(Integer id);
 
     Optional<Account> findByUsername(String username);
 }

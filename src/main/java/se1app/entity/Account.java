@@ -27,7 +27,6 @@ public class Account {
     public Account(String username, Password password) {
         this.username = username;
         this.password = password;
-        this.user = new User();
     }
 
     //GETTER

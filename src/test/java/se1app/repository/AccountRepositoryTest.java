@@ -35,19 +35,12 @@ public class AccountRepositoryTest {
 
         Account ina = new Account("Ina", new Password("Inaina12#"));
         accountRepository.save(ina);
-
     }
 
     @Test
     public void testFindAll() {
         List<Account> accounts = accountRepository.findAll();
         assertThat(accounts).hasSize(2);
-    }
-
-    @Test
-    public void testFindById() throws Exception {
-        Account account = accountRepository.findById(1);
-        assertThat(account.getId().equals(1));
     }
 
     @Test
