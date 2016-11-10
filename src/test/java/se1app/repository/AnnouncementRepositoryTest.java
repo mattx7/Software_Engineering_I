@@ -13,7 +13,7 @@ import se1app.entity.Sports;
 import se1app.entity.User;
 
 import java.util.Date;
-import java.util.Optional;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -29,28 +29,39 @@ public class AnnouncementRepositoryTest {
     @Autowired
     private AnnouncementRepository announcementRepository;
 
+    @Autowired
+    private SportsRepository sportsRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @Before
     public void setup() {
 
         Date datumuno = new Date(2016, 12, 16, 12, 12);
         User useruno = new User();
+        userRepository.save(useruno);
 
-        Announcement announo = new Announcement(Sports.JOGGING, "Eine Beschreibung", useruno, datumuno);
+        Sports jogging = Sports.JOGGING;
+        sportsRepository.save(jogging);
+        Announcement announo = new Announcement(jogging, "Eine Beschreibung", useruno, datumuno);
         announcementRepository.save(announo);
 
         Date datumdos = new Date(2016, 12, 16, 12, 12);
         User userdos = new User();
+        userRepository.save(userdos);
 
-        Announcement annodos = new Announcement(Sports.BIKING, "Zweite Beschreibung", userdos, datumdos);
+        Sports biking = Sports.BIKING;
+        sportsRepository.save(biking);
+        Announcement annodos = new Announcement(biking, "Zweite Beschreibung", userdos, datumdos);
         announcementRepository.save(annodos);
     }
 
     @Test
     public void testFindAnnouncementByCreationDate() throws Exception {
         Date datumuno = new Date(2016, 12, 16, 12, 12);
-        Optional<Announcement> announcement = announcementRepository.findByCreationDate(datumuno);
-        assertThat(announcement.isPresent());
-        assertThat(announcement.get().getCreationDate().equals(datumuno));
+        List<Announcement> announcement = announcementRepository.findByCreationDate(datumuno);
+        assertThat(announcement.get(0).getCreationDate().equals(datumuno));
     }
 
 

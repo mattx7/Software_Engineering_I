@@ -12,6 +12,20 @@ public class Filter {
     private Distance distance;
     private List<Keyword> keywords;
 
+    public Filter() {
+    }
+
+    public Filter(Sports category, Distance distance) {
+        this.category = category;
+        this.distance = distance;
+    }
+
+    public Filter(Sports category, Distance distance, List<Keyword> keywords) {
+        this.category = category;
+        this.distance = distance;
+        this.keywords = keywords;
+    }
+
     public List<Keyword> getKeywords() {
         return keywords;
     }

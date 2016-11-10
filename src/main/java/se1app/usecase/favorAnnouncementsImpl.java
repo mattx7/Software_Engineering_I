@@ -53,8 +53,12 @@ public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
                 filter.setCategory((Sports) elem);
             if (elem.getClass() == Keyword.class)
                 filter.addKeyword((Keyword) elem);
-        } // TODO is that right? and safe?
+        } // TODO FRAGE! is that right? and safe?
         return filter;
+    }
+
+    public final Filter createFilter(Distance distance, Sports category) throws TechnicalProblemException {
+        return new Filter(category, distance);
     }
 
     /**
