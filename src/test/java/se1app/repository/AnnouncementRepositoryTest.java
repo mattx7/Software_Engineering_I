@@ -64,5 +64,10 @@ public class AnnouncementRepositoryTest {
         assertThat(announcement.get(0).getCreationDate().equals(datumuno));
     }
 
+    @Test
+    public void testFindAll() {
+        List<Announcement> annos = announcementRepository.findAll();
+        assertThat(annos).hasSize(2);
+    }
 
 }
