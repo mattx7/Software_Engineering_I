@@ -26,10 +26,10 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = Application.class)
-public class FavorAnnouncementsImplTest {
+public class FavorAnnouncementsUseCaseImplTest {
 
     @Autowired
-    FavorAnnouncementsImpl favorAnnouncements;
+    FavorAnnouncementsUseCaseImpl useCase;
 
     @Autowired
     SportsRepository sportsRepository;
@@ -65,19 +65,19 @@ public class FavorAnnouncementsImplTest {
     @Test
     public void testCreateFilter() throws Exception {
         sportsRepository.save(Sports.BIKING);
-        Filter filter = favorAnnouncements.createFilter(Sports.BIKING);
+        Filter filter = useCase.createFilter(Sports.BIKING);
         assertThat(filter.getCategory().equals(Sports.BIKING));
     }
 
     @Test
     public void testSearchAnnouncements() throws Exception {
         sportsRepository.save(Sports.BIKING);
-        Filter filter = favorAnnouncements.createFilter(Sports.BIKING);
+        Filter filter = useCase.createFilter(Sports.BIKING);
+        assertThat(useCase.searchAnnouncements(filter)).isEqualTo(announcementRepository.findByCategory(filter.getCategory()));
     }
 
     @Test
     public void testAddToFavorites() throws Exception {
-
+        // TODO testAddToFavorites()
     }
-
 }

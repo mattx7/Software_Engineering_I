@@ -1,8 +1,6 @@
 package se1app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import se1app.entity.Announcement;
 import se1app.entity.Sports;
@@ -18,13 +16,13 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, Inte
 
     List<Announcement> findByCreationDate(Date date);
 
-    @Query(value = "SELECT * " +
-            "FROM ANNOUNCEMENT " +
-            "WHERE CATEGORY = :category "
-            , nativeQuery = true)
-    List<Announcement> findByCategory(@Param("category") Sports category);
+//    @Query(value = "SELECT * " +
+//            "FROM ANNOUNCEMENT " +
+//            "WHERE CATEGORY = :category"
+//            ,nativeQuery = true)
+//    List<Announcement> findByCategory(@Param("category") Sports category);
 
 
-    // List<Announcement> findByCategory(Sports category);
+    List<Announcement> findByCategory(Sports category);
 
 }

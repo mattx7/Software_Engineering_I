@@ -67,7 +67,7 @@ public class AnnouncementRepositoryTest {
     public void testFindByCreationDate() throws Exception {
         Date datumuno = new Date(2016, 12, 16, 12, 12);
         List<Announcement> annos = announcementRepository.findByCreationDate(datumuno);
-        assertThat(annos.get(0).getCreationDate().equals(datumuno));
+        assertThat(annos.get(0).getCreationDate()).isEqualTo(datumuno);
     }
 
     @Test
