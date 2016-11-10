@@ -29,22 +29,18 @@ public class AccountRepositoryTest {
 
     @Before
     public void setup() {
-        Account stefan = new Account("Stefan", new Password("stefan123#"));
-//        stefan.addReservation(new Reservation("Spectre"));
-//        stefan.addReservation(new Reservation("Goldfinger"));
-        // Kaskadierendes Speichern der Reservierungen durch entsprechende 'Cascade'-Angabe in Customer!
+        Account stefan = new Account("Stefan", new Password("Stefan12#"));
         accountRepository.save(stefan);
 
-        Account ina = new Account("Ina", new Password("ina12+"));
-        // ina.addReservation(new Account("Spectre"));
+        Account ina = new Account("Ina", new Password("Ina12+"));
         accountRepository.save(ina);
 
     }
 
     @Test
     public void testFindAll() {
-        List<Account> customers = accountRepository.findAll();
-        assertThat(customers).hasSize(3);
+        List<Account> accounts = accountRepository.findAll();
+        assertThat(accounts).hasSize(2);
     }
 
     @Test

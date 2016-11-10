@@ -54,4 +54,25 @@ public class Account {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Account) {
+            Account toCompare = (Account) o;
+            return this.id.equals(toCompare.id);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Account[id=%d, username='%s', password='&s']",
+                id, username, password);
+    }
 }
