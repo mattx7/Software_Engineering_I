@@ -45,7 +45,7 @@ public class AccountRepositoryTest {
     }
 
     @Test
-    public void findById() throws Exception {
+    public void testFindById() throws Exception {
         Account account = accountRepository.findById(1);
         assertThat(account.getId().equals(1));
     }
