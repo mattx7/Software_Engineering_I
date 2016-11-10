@@ -1,16 +1,25 @@
 package se1app.usecase;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import se1app.entity.Announcement;
 import se1app.entity.Sports;
 import se1app.entity.User;
 import se1app.exception.TechnicalProblemException;
+import se1app.repository.AnnouncementRepository;
 import se1app.types.Distance;
 import se1app.types.Filter;
+import se1app.types.Filterable;
+import se1app.types.Keyword;
 
 import java.util.List;
 
 // Klasse für die Implementierung der Use-Case- bzw. User-Story-Operationen
+@Service
 public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
+
+    @Autowired
+    private AnnouncementRepository announcementRepository;
 
     /**
      * Standard output are all Announcements
@@ -20,30 +29,39 @@ public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
      */
     @Override
     public List<Announcement> getAllAnnouncements() throws TechnicalProblemException {
-        return null;
+        return announcementRepository.findAll();
     }
 
     /**
      * Returns the Filter with the options the User did
      *
+     * @param filterables params for the Filter
      * @return the Filter with the options the User did
      * @throws TechnicalProblemException Exception from persistence layer
      */
     @Override
-    public Filter getFilter() throws TechnicalProblemException {
-        return null;
+    public final <T extends Filterable> Filter createFilter(T... filterables) throws TechnicalProblemException {
+        Filter filter = new Filter();
+        for (T elem : filterables) {
+            if (elem.getClass() == Distance.class)
+                filter.setDistance((Distance) elem);
+            if (elem.getClass() == Sports.class)
+                filter.setCategory((Sports) elem);
+            if (elem.getClass() == Keyword.class)
+                filter.addKeyword((Keyword) elem);
+        } // TODO is that right? and safe?
+        return filter;
     }
 
     /**
      * search for sport announcements.
      *
-     * @param category which sport are we looking for
-     * @param distance max distance
+     * @param filter includes Filterable Types
      * @return Announcements you have searched for
      * @throws TechnicalProblemException Exception from persistence layer
      */
     @Override
-    public List<Announcement> searchAnnouncements(Sports category, Distance distance) throws TechnicalProblemException {
+    public List<Announcement> searchAnnouncements(Filter filter) throws TechnicalProblemException {
         return null;
     }
 

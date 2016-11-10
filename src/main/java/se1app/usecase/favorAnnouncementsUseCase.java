@@ -1,11 +1,10 @@
 package se1app.usecase;
 
 import se1app.entity.Announcement;
-import se1app.entity.Sports;
 import se1app.entity.User;
 import se1app.exception.TechnicalProblemException;
-import se1app.types.Distance;
 import se1app.types.Filter;
+import se1app.types.Filterable;
 
 import java.util.List;
 
@@ -25,21 +24,21 @@ public interface favorAnnouncementsUseCase {
     /**
      * Returns the Filter with the options the User did
      *
+     * @param filterables params for the Filter
      * @return the Filter with the options the User did
      * @throws TechnicalProblemException Exception from persistence layer
      */
-    Filter getFilter() throws TechnicalProblemException;
+    public <T extends Filterable> Filter createFilter(T... filterables) throws TechnicalProblemException;
 
     // 6. Sucht die passenden Announcements heraus.
     /**
      * search for sport announcements.
      *
-     * @param category which sport are we looking for
-     * @param distance max distance
+     * @param filter includes Filterable Types
      * @return Announcements you have searched for
      * @throws TechnicalProblemException Exception from persistence layer
      */
-    List<Announcement> searchAnnouncements(Sports category, Distance distance) throws TechnicalProblemException;
+    public List<Announcement> searchAnnouncements(Filter filter) throws TechnicalProblemException;
 
     // 9. fügt Announcement zu favoriten hinzu
     /**

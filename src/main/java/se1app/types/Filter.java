@@ -2,21 +2,30 @@ package se1app.types;
 
 import se1app.entity.Sports;
 
+import java.util.List;
+
 /**
  * Created by MattX7 on 08.11.2016.
  */
 public class Filter {
-    private Sports categoriy;
+    private Sports category;
     private Distance distance;
-    private String text;
+    private List<Keyword> keywords;
 
-    // TODO Filter
-    public Sports getCategoriy() {
-        return categoriy;
+    public List<Keyword> getKeywords() {
+        return keywords;
     }
 
-    public void setCategoriy(Sports categoriy) {
-        this.categoriy = categoriy;
+    public void addKeyword(Keyword keyword) {
+        this.keywords.add(keyword);
+    }
+
+    public Sports getCategory() {
+        return category;
+    }
+
+    public void setCategory(Sports category) {
+        this.category = category;
     }
 
     public Distance getDistance() {
@@ -27,11 +36,5 @@ public class Filter {
         this.distance = distance;
     }
 
-    public String getText() {
-        return text;
-    }
 
-    public void setText(String text) {
-        this.text = text;
-    }
 }
