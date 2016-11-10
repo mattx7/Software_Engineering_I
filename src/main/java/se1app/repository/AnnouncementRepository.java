@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import se1app.entity.Announcement;
 
-import java.util.List;
+import java.util.Date;
 import java.util.Optional;
 
 /**
@@ -12,8 +12,8 @@ import java.util.Optional;
  */
 @Repository
 public interface AnnouncementRepository extends JpaRepository<Announcement, Integer> {
-    // Spring leitet die Query aus der Signatur ab ("id" ist ein Attribut)
-    Optional<Announcement> findById(Integer id);
 
-    List<Announcement> findAnnouncementByCategory(String category);
+    Optional<Announcement> findByCreationDate(Date date);
+
+
 }
