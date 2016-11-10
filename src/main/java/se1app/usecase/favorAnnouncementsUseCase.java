@@ -9,9 +9,10 @@ import se1app.types.Filterable;
 import java.util.List;
 
 // Interface für unsere Systemoperationen
-public interface favorAnnouncementsUseCase {
+public interface FavorAnnouncementsUseCase {
 
     // 2. Gibt ohne Eingabe ertmal alles aus.
+
     /**
      * Standard output are all Announcements
      *
@@ -21,6 +22,7 @@ public interface favorAnnouncementsUseCase {
     List<Announcement> getAllAnnouncements() throws TechnicalProblemException;
 
     // 5. liest die Filtereinstellungen des Benutzers ein.
+
     /**
      * Returns the Filter with the options the User did
      *
@@ -31,6 +33,7 @@ public interface favorAnnouncementsUseCase {
     public <T extends Filterable> Filter createFilter(T... filterables) throws TechnicalProblemException;
 
     // 6. Sucht die passenden Announcements heraus.
+
     /**
      * search for sport announcements.
      *
@@ -41,10 +44,11 @@ public interface favorAnnouncementsUseCase {
     public List<Announcement> searchAnnouncements(Filter filter) throws TechnicalProblemException;
 
     // 9. fügt Announcement zu favoriten hinzu
+
     /**
      * Adds an announcement to the list of favorites.
      *
-     * @param user who want to add the announcement
+     * @param user         who want to add the announcement
      * @param announcement which we want to favor
      * @throws TechnicalProblemException Exception from persistence layer
      */

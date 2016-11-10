@@ -16,12 +16,12 @@ import java.util.List;
 
 // Klasse für die Implementierung der Use-Case- bzw. User-Story-Operationen
 @Service
-public class favorAnnouncementsImpl implements favorAnnouncementsUseCase {
+public class FavorAnnouncementsImpl implements FavorAnnouncementsUseCase {
 
     private final AnnouncementRepository announcementRepository;
 
     @Autowired
-    public favorAnnouncementsImpl(AnnouncementRepository announcementRepository) {
+    public FavorAnnouncementsImpl(AnnouncementRepository announcementRepository) {
         this.announcementRepository = announcementRepository;
     }
 

@@ -1,4 +1,4 @@
-package se1app.repository;
+package se1app.usecase;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,33 +11,37 @@ import se1app.Application;
 import se1app.entity.Announcement;
 import se1app.entity.Sports;
 import se1app.entity.User;
+import se1app.repository.AnnouncementRepository;
+import se1app.repository.SportsRepository;
+import se1app.repository.UserRepository;
+import se1app.types.Filter;
 
 import java.util.Date;
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 /**
- * Created by Neak on 08.11.2016.
+ * Created by MattX7 on 10.11.2016.
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = Application.class)
-public class AnnouncementRepositoryTest {
+public class FavorAnnouncementsImplTest {
 
     @Autowired
-    private AnnouncementRepository announcementRepository;
+    FavorAnnouncementsImpl favorAnnouncements;
 
     @Autowired
-    private SportsRepository sportsRepository;
+    SportsRepository sportsRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
+
+    @Autowired
+    AnnouncementRepository announcementRepository;
 
     @Before
-    public void setup() {
-
+    public void setUp() throws Exception {
         Date datumuno = new Date(2016, 12, 16, 12, 12);
         User useruno = new User();
         userRepository.save(useruno);
@@ -47,7 +51,7 @@ public class AnnouncementRepositoryTest {
         Announcement announo = new Announcement(jogging, "Eine Beschreibung", useruno, datumuno);
         announcementRepository.save(announo);
 
-        Date datumdos = new Date(2016, 12, 6, 12, 12);
+        Date datumdos = new Date(2016, 12, 16, 12, 12);
         User userdos = new User();
         userRepository.save(userdos);
 
@@ -55,25 +59,25 @@ public class AnnouncementRepositoryTest {
         sportsRepository.save(biking);
         Announcement annodos = new Announcement(biking, "Zweite Beschreibung", userdos, datumdos);
         announcementRepository.save(annodos);
+
     }
 
     @Test
-    public void testFindAll() {
-        List<Announcement> annos = announcementRepository.findAll();
-        assertThat(annos).hasSize(2);
+    public void testCreateFilter() throws Exception {
+        sportsRepository.save(Sports.BIKING);
+        Filter filter = favorAnnouncements.createFilter(Sports.BIKING);
+        assertThat(filter.getCategory().equals(Sports.BIKING));
     }
 
     @Test
-    public void testFindByCreationDate() throws Exception {
-        Date datumuno = new Date(2016, 12, 16, 12, 12);
-        List<Announcement> annos = announcementRepository.findByCreationDate(datumuno);
-        assertThat(annos.get(0).getCreationDate().equals(datumuno));
+    public void testSearchAnnouncements() throws Exception {
+        sportsRepository.save(Sports.BIKING);
+        Filter filter = favorAnnouncements.createFilter(Sports.BIKING);
     }
 
     @Test
-    public void testFindByCategory() {
-        sportsRepository.save(Sports.JOGGING);
-        List<Announcement> annos = announcementRepository.findByCategory(Sports.JOGGING);
-        assertThat(annos.get(0).getCategory().equals(Sports.JOGGING));
+    public void testAddToFavorites() throws Exception {
+
     }
+
 }
