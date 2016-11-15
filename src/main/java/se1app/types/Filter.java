@@ -1,5 +1,6 @@
 package se1app.types;
 
+import se1app.entity.Residence;
 import se1app.entity.Sports;
 
 import java.util.List;

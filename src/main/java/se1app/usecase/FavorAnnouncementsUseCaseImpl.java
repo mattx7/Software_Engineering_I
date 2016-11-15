@@ -3,6 +3,7 @@ package se1app.usecase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se1app.entity.Announcement;
+import se1app.entity.Residence;
 import se1app.entity.Sports;
 import se1app.entity.User;
 import se1app.exception.TechnicalProblemException;
@@ -70,7 +71,7 @@ public class FavorAnnouncementsUseCaseImpl implements FavorAnnouncementsUseCase 
      */
     @Override
     public List<Announcement> searchAnnouncements(Filter filter) throws TechnicalProblemException {
-        return announcementRepository.findByCategory(filter.getCategory());
+        return announcementRepository.findByCategory(filter.getCategory()); //TODO try_catch
     }
 
     /**
@@ -83,5 +84,6 @@ public class FavorAnnouncementsUseCaseImpl implements FavorAnnouncementsUseCase 
     @Override
     public void addToFavorites(User user, Announcement announcement) throws TechnicalProblemException {
         user.addFavoriteAnnouncement(announcement);
+        // TODO speichern
     }
 }

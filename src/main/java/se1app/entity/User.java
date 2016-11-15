@@ -14,8 +14,8 @@ public class User {
     @GeneratedValue
     private Integer id;
 
-    // TODO später als Liste
-    private Image profileImages;
+
+    private Image profileImages; // TODO später als Liste
     private String telNr;
     private String description;
     private String gender;
@@ -32,9 +32,7 @@ public class User {
     @ManyToMany
     private List<Announcement> favAnnos;
 
-    //TODO AnnouncementSearch
 
-    //TODO Create user
     public User() {
 
     }

@@ -27,7 +27,6 @@ public class SportsRepositoryTest {
 
     @Before
     public void setup() {
-
         Sports jogging = Sports.JOGGING;
         sportsRepository.save(jogging);
     }

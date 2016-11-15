@@ -2,10 +2,7 @@ package se1app.entity;
 
 import se1app.types.Password;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  * Created by MattX7 on 06.11.2016.
@@ -21,7 +18,7 @@ public class Account {
     private String username;
     private Password password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     public Account(String username, Password password) {
