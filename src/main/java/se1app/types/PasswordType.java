@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Neak on 06.11.2016.
  */
-public class Password implements Serializable {
+public class PasswordType implements Serializable {
 
     private String pw;
 
@@ -22,7 +22,7 @@ public class Password implements Serializable {
     private static final String PASSWORD_PATTERN =
             "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
 
-    public Password(String pw) {
+    public PasswordType(String pw) {
         if (!isValidPassword(pw)) {
             // Wir verhindern, dass ein ungültiges Objekt erzeugt werden kann
             throw new IllegalArgumentException("Keine gültiges PW:" + pw);

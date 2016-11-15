@@ -3,15 +3,10 @@ package se1app.usecase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se1app.entity.Announcement;
-import se1app.entity.Residence;
-import se1app.entity.Sports;
 import se1app.entity.User;
 import se1app.exception.TechnicalProblemException;
 import se1app.repository.AnnouncementRepository;
-import se1app.types.Distance;
-import se1app.types.Filter;
-import se1app.types.Filterable;
-import se1app.types.Keyword;
+import se1app.types.*;
 
 import java.util.List;
 
@@ -45,21 +40,21 @@ public class FavorAnnouncementsUseCaseImpl implements FavorAnnouncementsUseCase 
      * @throws TechnicalProblemException Exception from persistence layer
      */
     @Override
-    public final <T extends Filterable> Filter createFilter(T... filterables) throws TechnicalProblemException {
-        Filter filter = new Filter();
+    public final <T extends FilterableType> FilterType createFilter(T... filterables) throws TechnicalProblemException {
+        FilterType filter = new FilterType();
         for (T elem : filterables) {
-            if (elem.getClass() == Distance.class)
-                filter.setDistance((Distance) elem);
-            if (elem.getClass() == Sports.class)
-                filter.setCategory((Sports) elem);
-            if (elem.getClass() == Keyword.class)
-                filter.addKeyword((Keyword) elem);
+            if (elem.getClass() == DistanceType.class)
+                filter.setDistance((DistanceType) elem);
+            if (elem.getClass() == SportsType.class)
+                filter.setCategory((SportsType) elem);
+            if (elem.getClass() == KeywordType.class)
+                filter.addKeyword((KeywordType) elem);
         } // TODO FRAGE! is that right? and safe?
         return filter;
     }
 
-    public final Filter createFilter(Sports category) throws TechnicalProblemException {
-        return new Filter(category);
+    public final FilterType createFilter(SportsType category) throws TechnicalProblemException {
+        return new FilterType(category);
     }
 
     /**
@@ -70,7 +65,7 @@ public class FavorAnnouncementsUseCaseImpl implements FavorAnnouncementsUseCase 
      * @throws TechnicalProblemException Exception from persistence layer
      */
     @Override
-    public List<Announcement> searchAnnouncements(Filter filter) throws TechnicalProblemException {
+    public List<Announcement> searchAnnouncements(FilterType filter) throws TechnicalProblemException {
         return announcementRepository.findByCategory(filter.getCategory()); //TODO try_catch
     }
 

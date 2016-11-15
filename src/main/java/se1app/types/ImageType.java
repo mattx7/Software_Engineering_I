@@ -5,10 +5,10 @@ import java.io.Serializable;
 /**
  * Created by MattX7 on 10.11.2016.
  */
-public class Image implements Serializable {
+public class ImageType implements Serializable {
     private String image;
 
-    public Image(String image) {
+    public ImageType(String image) {
         this.image = image;
     }
 

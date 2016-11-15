@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import se1app.Application;
 import se1app.entity.Announcement;
-import se1app.entity.Sports;
 import se1app.entity.User;
+import se1app.types.SportsType;
 
 import java.util.Date;
 import java.util.List;
@@ -29,8 +29,6 @@ public class AnnouncementRepositoryTest {
     @Autowired
     private AnnouncementRepository announcementRepository;
 
-    @Autowired
-    private SportsRepository sportsRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -42,18 +40,14 @@ public class AnnouncementRepositoryTest {
         User useruno = new User();
         userRepository.save(useruno);
 
-        Sports jogging = Sports.JOGGING;
-        sportsRepository.save(jogging);
-        Announcement announo = new Announcement(jogging, "Eine Beschreibung", useruno, datumuno);
+        Announcement announo = new Announcement(SportsType.JOGGING, "Eine Beschreibung", useruno, datumuno);
         announcementRepository.save(announo);
 
         Date datumdos = new Date(2016, 12, 6, 12, 12);
         User userdos = new User();
         userRepository.save(userdos);
 
-        Sports biking = Sports.BIKING;
-        sportsRepository.save(biking);
-        Announcement annodos = new Announcement(biking, "Zweite Beschreibung", userdos, datumdos);
+        Announcement annodos = new Announcement(SportsType.BIKING, "Zweite Beschreibung", userdos, datumdos);
         announcementRepository.save(annodos);
     }
 
@@ -72,8 +66,7 @@ public class AnnouncementRepositoryTest {
 
     @Test
     public void testFindByCategory() {
-        sportsRepository.save(Sports.JOGGING);
-        List<Announcement> annos = announcementRepository.findByCategory(Sports.JOGGING);
-        assertThat(annos.get(0).getCategory().equals(Sports.JOGGING));
+        List<Announcement> annos = announcementRepository.findByCategory(SportsType.JOGGING);
+        assertThat(annos.get(0).getCategory().equals(SportsType.JOGGING));
     }
 }

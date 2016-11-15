@@ -3,8 +3,8 @@ package se1app.usecase;
 import se1app.entity.Announcement;
 import se1app.entity.User;
 import se1app.exception.TechnicalProblemException;
-import se1app.types.Filter;
-import se1app.types.Filterable;
+import se1app.types.FilterType;
+import se1app.types.FilterableType;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public interface FavorAnnouncementsUseCase {
      * @return the Filter with the options the User did
      * @throws TechnicalProblemException Exception from persistence layer
      */
-    public <T extends Filterable> Filter createFilter(T... filterables) throws TechnicalProblemException;
+    public <T extends FilterableType> FilterType createFilter(T... filterables) throws TechnicalProblemException;
 
     // 6. Sucht die passenden Announcements heraus.
 
@@ -41,7 +41,7 @@ public interface FavorAnnouncementsUseCase {
      * @return Announcements you have searched for
      * @throws TechnicalProblemException Exception from persistence layer
      */
-    public List<Announcement> searchAnnouncements(Filter filter) throws TechnicalProblemException;
+    public List<Announcement> searchAnnouncements(FilterType filter) throws TechnicalProblemException;
 
     // 9. fügt Announcement zu favoriten hinzu
 

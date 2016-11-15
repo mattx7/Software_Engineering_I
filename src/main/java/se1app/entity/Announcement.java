@@ -1,6 +1,11 @@
 package se1app.entity;
 
-import javax.persistence.*;
+import se1app.types.SportsType;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 /**
@@ -8,27 +13,24 @@ import java.util.Date;
  */
 @Entity
 public class Announcement {
+    private SportsType category;
+    private String description;
+    private Date creationDate;
 
     @Id
     @GeneratedValue
     private Integer id;
-
-    @OneToOne
-    private Sports category;
-    private String description;
     @ManyToOne
     private User owner;
-    private Date creationDate;
 
-    public Announcement(Sports category, String description, User owner, Date creationDate) {
+    public Announcement(SportsType category, String description, User owner, Date creationDate) {
         this.category = category;
         this.description = description;
         this.owner = owner;
         this.creationDate = creationDate;
     }
 
-
-    public Sports getCategory() {
+    public SportsType getCategory() {
         return category;
     }
 
@@ -44,7 +46,7 @@ public class Announcement {
         return creationDate;
     }
 
-    public void setCategory(Sports category) {
+    public void setCategory(SportsType category) {
         this.category = category;
     }
 

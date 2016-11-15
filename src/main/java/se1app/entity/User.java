@@ -1,6 +1,7 @@
 package se1app.entity;
 
-import se1app.types.Image;
+import se1app.types.ImageType;
+import se1app.types.SportsType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,20 +15,17 @@ public class User {
     @GeneratedValue
     private Integer id;
 
-
-    private Image profileImages; // TODO später als Liste
+    private ImageType profileImages; // TODO später als Liste
     private String telNr;
     private String description;
     private String gender;
     private String relationship;
+    private String languages;
+    @ElementCollection
+    private List<SportsType> favSports;
 
     @OneToOne
     private Residence residence;
-
-    private String languages;
-
-    @ManyToMany
-    private List<Sports> favSports;
 
     @ManyToMany
     private List<Announcement> favAnnos;
@@ -62,11 +60,11 @@ public class User {
 
     }
 
-    public Image getProfileImages() {
+    public ImageType getProfileImages() {
         return profileImages;
     }
 
-    public void setProfileImages(Image profileImages) {
+    public void setProfileImages(ImageType profileImages) {
         this.profileImages = profileImages;
     }
 
@@ -118,11 +116,11 @@ public class User {
         this.languages = languages;
     }
 
-    public void addFavoriteSport(Sports sport) {
+    public void addFavoriteSport(SportsType sport) {
         this.favSports.add(sport);
     }
 
-    public void removeFavoriteSport(Sports sport) {
+    public void removeFavoriteSport(SportsType sport) {
         this.favSports.remove(sport);
     }
 
@@ -139,4 +137,7 @@ public class User {
     }
 
 
+    public void setFavSports(List<SportsType> favSports) {
+        this.favSports = favSports;
+    }
 }

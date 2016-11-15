@@ -1,6 +1,6 @@
 package se1app.entity;
 
-import se1app.types.Password;
+import se1app.types.PasswordType;
 
 import javax.persistence.*;
 
@@ -10,28 +10,26 @@ import javax.persistence.*;
 
 @Entity
 public class Account {
+    private String username;
+    private PasswordType password;
 
     @Id
     @GeneratedValue
     private Integer id;
 
-    private String username;
-    private Password password;
-
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
-    public Account(String username, Password password) {
+    public Account(String username, PasswordType password) {
         this.username = username;
         this.password = password;
     }
 
-    //GETTER
     public String getUsername() {
         return username;
     }
 
-    public Password getPassword() {
+    public PasswordType getPassword() {
         return password;
     }
 
@@ -39,12 +37,11 @@ public class Account {
         return user;
     }
 
-    //SETTER
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setPassword(Password password) {
+    public void setPassword(PasswordType password) {
         this.password = password;
     }
 

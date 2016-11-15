@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import se1app.Application;
 import se1app.entity.Account;
-import se1app.types.Password;
+import se1app.types.PasswordType;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,10 +30,10 @@ public class AccountRepositoryTest {
 
     @Before
     public void setup() {
-        Account stefan = new Account("Stefan", new Password("Stefan1#"));
+        Account stefan = new Account("Stefan", new PasswordType("Stefan1#"));
         accountRepository.save(stefan);
 
-        Account ina = new Account("Ina", new Password("Inaina12#"));
+        Account ina = new Account("Ina", new PasswordType("Inaina12#"));
         accountRepository.save(ina);
     }
 

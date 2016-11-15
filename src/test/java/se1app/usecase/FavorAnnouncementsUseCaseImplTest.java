@@ -9,12 +9,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import se1app.Application;
 import se1app.entity.Announcement;
-import se1app.entity.Sports;
 import se1app.entity.User;
 import se1app.repository.AnnouncementRepository;
-import se1app.repository.SportsRepository;
 import se1app.repository.UserRepository;
-import se1app.types.Filter;
+import se1app.types.FilterType;
+import se1app.types.SportsType;
 
 import java.util.Date;
 
@@ -32,9 +31,6 @@ public class FavorAnnouncementsUseCaseImplTest {
     FavorAnnouncementsUseCaseImpl useCase;
 
     @Autowired
-    SportsRepository sportsRepository;
-
-    @Autowired
     UserRepository userRepository;
 
     @Autowired
@@ -46,33 +42,26 @@ public class FavorAnnouncementsUseCaseImplTest {
         User useruno = new User();
         userRepository.save(useruno);
 
-        Sports jogging = Sports.JOGGING;
-        sportsRepository.save(jogging);
-        Announcement announo = new Announcement(jogging, "Eine Beschreibung", useruno, datumuno);
+        Announcement announo = new Announcement(SportsType.JOGGING, "Eine Beschreibung", useruno, datumuno);
         announcementRepository.save(announo);
 
         Date datumdos = new Date(2016, 12, 16, 12, 12);
         User userdos = new User();
         userRepository.save(userdos);
 
-        Sports biking = Sports.BIKING;
-        sportsRepository.save(biking);
-        Announcement annodos = new Announcement(biking, "Zweite Beschreibung", userdos, datumdos);
+        Announcement annodos = new Announcement(SportsType.BIKING, "Zweite Beschreibung", userdos, datumdos);
         announcementRepository.save(annodos);
-
     }
 
     @Test
     public void testCreateFilter() throws Exception {
-        sportsRepository.save(Sports.BIKING);
-        Filter filter = useCase.createFilter(Sports.BIKING);
-        assertThat(filter.getCategory().equals(Sports.BIKING));
+        FilterType filter = useCase.createFilter(SportsType.BIKING);
+        assertThat(filter.getCategory().equals(SportsType.BIKING));
     }
 
     @Test
     public void testSearchAnnouncements() throws Exception {
-        sportsRepository.save(Sports.BIKING);
-        Filter filter = useCase.createFilter(Sports.BIKING);
+        FilterType filter = useCase.createFilter(SportsType.BIKING);
         assertThat(useCase.searchAnnouncements(filter)).isEqualTo(announcementRepository.findByCategory(filter.getCategory()));
     }
 
